@@ -4,15 +4,24 @@ import {
   RouterModule
 } from '@angular/router';
 
+import { AuthGuardService } from './auth/auth-guard.service';
+
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth',
+    redirectTo: '/carts',
     pathMatch: 'full',
   },
   {
     path: 'auth',
     loadChildren: './firebase/firebase.module#FirebaseModule',
+    data: {
+      reuseRoute: true,
+    },
+  },
+  {
+    path: 'carts',
+    loadChildren: './cart/cart.module#CartModule',
     data: {
       reuseRoute: true,
     },
