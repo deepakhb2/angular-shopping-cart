@@ -151,7 +151,8 @@
               "projects/frontend/src/assets"
             ],
             "styles": [
-              "projects/frontend/src/styles.scss"
+              "projects/frontend/src/styles.scss",
+              "node_modules/@nebular/theme/styles/prebuilt/default.css"
             ],
             "scripts": []
           },
@@ -215,7 +216,8 @@
               "projects/frontend/src/assets"
             ],
             "styles": [
-              "projects/frontend/src/styles.scss"
+              "projects/frontend/src/styles.scss",
+              "node_modules/@nebular/theme/styles/prebuilt/default.css"
             ],
             "scripts": []
           }
@@ -291,5 +293,5 @@
   "cli": {
     "analytics": false
   },
-  "defaultProject": "admin"
+  "defaultProject": "frontend"
 }

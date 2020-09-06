@@ -17,9 +17,12 @@ import {
 } from '@nebular/firebase-auth';
 
 import { FirebaseRoutingModule } from './firebase-routing.module';
+import { AuthStateComponent } from './components/auth-state/auth-state.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AuthStateComponent,
+  ],
   imports: [
     CommonModule,
     FirebaseRoutingModule,
@@ -36,6 +39,9 @@ import { FirebaseRoutingModule } from './firebase-routing.module';
       forms: {},
     }),
     HttpClientModule
+  ],
+  exports: [
+    AuthStateComponent,
   ]
 })
 export class FirebaseModule { }
