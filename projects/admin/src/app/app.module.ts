@@ -9,7 +9,7 @@ import {
 
 import { FirebaseModule } from './firebase/firebase.module';
 import { CartModule } from './cart/cart.module';
-import { AuthGuardService } from './auth/auth-guard.service';
+import { AuthGuardService } from './services/auth-guard.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthStateComponent } from './components/auth-state/auth-state.component';

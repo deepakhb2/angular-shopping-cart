@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 
 import {
   NbPasswordAuthStrategy,
@@ -26,6 +27,7 @@ import { environment } from './../../environments/environment';
     AngularFireModule.initializeApp(environment.fireBase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    AngularFirestoreModule,
     NbFirebaseAuthModule,
     NbAuthModule.forRoot({
      strategies: [
