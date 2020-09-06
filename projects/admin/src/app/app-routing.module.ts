@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: './firebase/firebase.module#FirebaseModule',
+    loadChildren:  () => import(`cart-firebase`).then(m => m.FirebaseModule), //'./firebase/firebase.module#FirebaseModule',
     data: {
       reuseRoute: true,
     },

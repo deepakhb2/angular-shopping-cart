@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { FirestoreService } from '../../../firebase/services/firestore.service'
-import { Item } from '../../../firebase/models/item.model';
+import { FirestoreService } from 'cart-firebase'
+import { Item } from 'cart-firebase';
 
 @Component({
   selector: 'app-cart-show',
