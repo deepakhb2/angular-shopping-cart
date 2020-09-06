@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
+import {
+  Observable
+} from 'rxjs'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +14,12 @@ export class FirestoreService {
     private firestore: AngularFirestore
   ) { }
 
-  getCarts() {
-    return this.firestore.collection("carts").snapshotChanges();
+
+  getCollection(collection: string): Observable<Array<T>> {
+    return this.firestore.collection(collection).snapshotChanges();
+  }
+
+  getDoc(collection: string, docID: string) {
+    return this.firestore.doc(collection+'/'+docID).snapshotChanges();
   }
 }
