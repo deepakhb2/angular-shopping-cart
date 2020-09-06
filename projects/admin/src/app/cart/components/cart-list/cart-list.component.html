@@ -1,3 +1,5 @@
+<h2>Carts</h2>
+
 <table>
   <thead>
     <th>ID</th>
@@ -7,14 +9,14 @@
   </thead>
   <tbody>
     <tr *ngFor="let cart of carts">
-
       <td>{{cart.ID}}</td>
       <td>{{cart.userID}}</td>
-      <td>{{cart.items.length}}</td>
-      <td>{{cart.total}}</td>
       <td>
-          <button (click)="delete(policy.id)">Delete</button>
+        <a [routerLink]="['/carts/'+cart.id]">
+          {{cart.items.length}}
+        </a>
       </td>
+      <td>{{cart.total}}</td>
     </tr>
   </tbody>
 </table>

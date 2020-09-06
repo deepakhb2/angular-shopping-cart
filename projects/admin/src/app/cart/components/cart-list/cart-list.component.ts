@@ -15,10 +15,10 @@ export class CartListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.firestoreService.getCarts().subscribe(data => {
+    this.firestoreService.getCollection('carts').subscribe(data => {
       this.carts = data.map(e => {
         return {
-          ID: e.payload.doc.id,
+          id: e.payload.doc.id,
           ...e.payload.doc.data()
         } as Cart;
       })
