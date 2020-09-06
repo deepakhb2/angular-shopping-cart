@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FirestoreService } from '../../../firebase/services/firestore.service'
+import { Cart } from '../../../firebase/models/cart.model';
 
 @Component({
   selector: 'app-cart-list',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart-list.component.scss']
 })
 export class CartListComponent implements OnInit {
+  carts: Cart[];
 
-  constructor() { }
+  constructor(
+    private firestoreService: FirestoreService
+  ) { }
 
   ngOnInit(): void {
+    this.firestoreService.getCarts().subscribe(data => {
+      this.carts = data.map(e => {
+        return {
+          ID: e.payload.doc.id,
+          ...e.payload.doc.data()
+        } as Cart;
+      })
+    });
   }
 
 }
