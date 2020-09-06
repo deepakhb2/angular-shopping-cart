@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FirestoreService } from '../../../firebase/services/firestore.service'
-import { Cart } from '../../../firebase/models/cart.model';
+import { FirestoreService } from 'cart-firebase'
+import { Cart } from 'cart-firebase';
 
 @Component({
   selector: 'app-cart-list',

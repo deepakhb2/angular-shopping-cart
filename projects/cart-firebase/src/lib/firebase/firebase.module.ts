@@ -17,14 +17,12 @@ import {
 } from '@nebular/firebase-auth';
 
 import { FirebaseRoutingModule } from './firebase-routing.module';
-import { environment } from './../../environments/environment';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     FirebaseRoutingModule,
-    AngularFireModule.initializeApp(environment.fireBase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFirestoreModule,

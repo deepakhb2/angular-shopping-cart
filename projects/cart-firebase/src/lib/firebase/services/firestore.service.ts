@@ -15,7 +15,7 @@ export class FirestoreService {
   ) { }
 
 
-  getCollection(collection: string): Observable<Array<T>> {
+  getCollection(collection: string) {
     return this.firestore.collection(collection).snapshotChanges();
   }
 
