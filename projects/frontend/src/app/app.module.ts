@@ -15,6 +15,7 @@ import {
 import { environment } from './../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ShoppingModule } from './shopping/shopping.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AppComponent } from './app.component';
     NbThemeModule.forRoot(),
     NbLayoutModule,
     NbSidebarModule.forRoot(),
-    NbButtonModule
+    NbButtonModule,
+    ShoppingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
