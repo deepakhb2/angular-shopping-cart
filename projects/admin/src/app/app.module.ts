@@ -16,6 +16,7 @@ import { CartModule } from './cart/cart.module';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AppComponent } from './app.component';
     NbThemeModule.forRoot(),
     NbLayoutModule,
     NbSidebarModule.forRoot(),
-    NbButtonModule
+    NbButtonModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [
     AuthGuardService
