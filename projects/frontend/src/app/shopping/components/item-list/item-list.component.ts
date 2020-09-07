@@ -22,6 +22,7 @@ export class ItemListComponent implements OnInit {
       this.items = data.map(e => {
         return {
           id: e.payload.doc.id,
+          // @ts-ignore
           ...e.payload.doc.data()
         } as Item;
       })

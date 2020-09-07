@@ -20,6 +20,7 @@ export class CartShowComponent implements OnInit {
   ngOnInit(): void {
     let cartId = this.actRoute.snapshot.params.id;
     this.firestoreService.getDoc('carts', cartId).subscribe(data => {
+      // @ts-ignore
       this.items = data.payload.data().items
     });
   }

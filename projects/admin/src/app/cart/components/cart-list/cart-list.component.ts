@@ -19,6 +19,7 @@ export class CartListComponent implements OnInit {
       this.carts = data.map(e => {
         return {
           id: e.payload.doc.id,
+          // @ts-ignore
           ...e.payload.doc.data()
         } as Cart;
       })
