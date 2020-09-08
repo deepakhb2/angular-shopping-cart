@@ -6,7 +6,10 @@ import { Item } from 'cart-firebase';
 
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectShoppingItems } from '../../../state/selectors';
+import {
+  selectShoppingItems,
+  AuthGuardService,
+} from 'cart-firebase';
 
 @Component({
   selector: 'app-shopping-item-list',
@@ -17,8 +20,8 @@ export class ItemListComponent implements OnInit {
   items$: Observable<Item[]>;
 
   constructor(
-    private store: Store<{ items: number }>,
-    private authService: NbAuthService,
+    private store: Store,
+    private authService: AuthGuardService,
     private firestoreService: FirestoreService
   ) { }
 

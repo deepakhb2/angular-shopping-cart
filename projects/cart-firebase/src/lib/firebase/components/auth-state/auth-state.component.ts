@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, share, take } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import { NbAuthService, NbAuthToken } from '@nebular/auth';
   templateUrl: './auth-state.component.html',
   styleUrls: ['./auth-state.component.scss']
 })
-export class AuthStateComponent {
+export class AuthStateComponent implements OnInit {
   isAuthenticated$: Observable<boolean>;
 
   constructor(
@@ -19,6 +19,8 @@ export class AuthStateComponent {
   ) {
     this.isAuthenticated$ = this.authService.isAuthenticated();
   }
+
+  ngOnInit(): void {}
 
   logout() {
     this.router.navigate(['/auth/logout']);
