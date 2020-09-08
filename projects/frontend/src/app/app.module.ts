@@ -7,6 +7,9 @@ import {
   NbLayoutModule,
   NbButtonModule
 } from '@nebular/theme';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import {
   FirebaseModule,
@@ -16,6 +19,8 @@ import { environment } from './../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShoppingModule } from './shopping/shopping.module';
+import { reducer } from './state/reducer'
+import { Effects } from './state/effects'
 
 @NgModule({
   declarations: [
@@ -31,6 +36,12 @@ import { ShoppingModule } from './shopping/shopping.module';
     NbSidebarModule.forRoot(),
     NbButtonModule,
     ShoppingModule,
+    StoreModule.forRoot({ 'shopping': reducer }),
+    StoreDevtoolsModule.instrument({
+      name: 'shopping-cart',
+      maxAge: 25,
+    }),
+    EffectsModule.forRoot([Effects]),
   ],
   providers: [],
   bootstrap: [AppComponent]
