@@ -1,0 +1,29 @@
+<h2>Cart</h2>
+<div *ngIf="cart$ | async; let cart">
+  <table>
+    <tbody>
+      <tr>
+        <th>No. of Items :</th>
+        <td>{{ cart.items.length }}</td>
+      </tr>
+      <tr>
+        <th>Total Amount :</th>
+        <td>{{ cart.total }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Price</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cart.items">
+        <td>{{item.name}}</td>
+        <td>{{item.price}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

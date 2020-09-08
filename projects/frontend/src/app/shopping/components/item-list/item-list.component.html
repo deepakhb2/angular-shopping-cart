@@ -13,8 +13,11 @@
       <td>{{item.name}}</td>
       <td>{{item.price}}</td>
       <td>
-        <a *ngIf="authService.isAuthenticated() | async">Add to cart</a>
+        <a (click)=[addToCart(item)] *ngIf="authService.isAuthenticated() | async">Add to cart</a>
       </td>
     </tr>
   </tbody>
 </table>
+
+<app-shopping-cart>
+</app-shopping-cart>

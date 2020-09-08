@@ -6,11 +6,10 @@ import { Item } from 'cart-firebase';
 
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getItems } from '../../../state/actions';
 import { selectShoppingItems } from '../../../state/selectors';
 
 @Component({
-  selector: 'app-item-list',
+  selector: 'app-shopping-item-list',
   templateUrl: './item-list.component.html',
   styleUrls: ['./item-list.component.scss']
 })
@@ -26,5 +25,9 @@ export class ItemListComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch({ type: 'Load Items' });
     this.items$ = this.store.select(selectShoppingItems);
+  }
+
+  addToCart(item: Item): void {
+    this.store.dispatch({type: 'Add Item To Cart', payload: item, userID: 1});
   }
 }
