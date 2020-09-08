@@ -16,3 +16,10 @@ export const selectShoppingItems = createSelector(
     return shopping?.items
   }
 );
+
+export const selectShoppingCart = createSelector(
+  selectShopping,
+  (shopping: ShoppingState) => {
+    return shopping?.cart
+  }
+);
