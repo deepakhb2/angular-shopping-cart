@@ -19,8 +19,10 @@ import { environment } from './../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShoppingModule } from './shopping/shopping.module';
-import { reducer } from './state/reducer'
-import { Effects } from './state/effects'
+import {
+  reducer,
+  Effects,
+} from 'cart-firebase';
 
 @NgModule({
   declarations: [

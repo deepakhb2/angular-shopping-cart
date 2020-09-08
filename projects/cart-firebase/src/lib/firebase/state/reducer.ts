@@ -1,7 +1,6 @@
 import * as _ from 'lodash';
 
 import { createReducer, on } from '@ngrx/store';
-import { createEmptyCart } from './actions';
 
 export function reducer(state, action) {
   var deltaState = {}
@@ -17,7 +16,7 @@ export function reducer(state, action) {
         cart: {
           items: [],
           total: 0,
-          userID: 0
+          userID: state?.currentUser?.userID
         }
       }
       return _.assign({}, state, deltaState);
@@ -28,8 +27,13 @@ export function reducer(state, action) {
         cart: {
           items: [...cart.items, item],
           total: cart.total + item.price,
-          userID: action.userID
+          userID: cart.userID
         }
+      }
+      return _.assign({}, state, deltaState);
+    case 'Add Current User':
+      deltaState = {
+        currentUser: action.payload
       }
       return _.assign({}, state, deltaState);
     default:

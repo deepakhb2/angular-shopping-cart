@@ -6,8 +6,10 @@ import { Item, Cart } from 'cart-firebase';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { createEmptyCart } from '../../../state/actions';
-import { selectShoppingCart } from '../../../state/selectors';
+import {
+  createEmptyCart,
+  selectShoppingCart,
+} from 'cart-firebase';
 
 @Component({
   selector: 'app-shopping-cart',

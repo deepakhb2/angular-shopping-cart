@@ -2,6 +2,7 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 
 export interface ShoppingState {
   items: [];
+  cart: any;
 }
 
 export interface AppState {

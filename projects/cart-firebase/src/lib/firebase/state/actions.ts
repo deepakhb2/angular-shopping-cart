@@ -15,3 +15,10 @@ export class AddItemToCart implements Action {
 
   constructor(public payload?: any) {}
 }
+
+export class AddCurrentUser implements Action {
+  //public type: string;
+  readonly type = 'Add Current User';
+
+  constructor(public payload?: any) {}
+}

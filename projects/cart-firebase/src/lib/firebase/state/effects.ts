@@ -3,7 +3,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 
-import { FirestoreService, Item } from 'cart-firebase'
+import { FirestoreService } from '../services/firestore.service'
+import { Item } from '../models/item.model'
 
 import { SetItems } from './actions';
 
