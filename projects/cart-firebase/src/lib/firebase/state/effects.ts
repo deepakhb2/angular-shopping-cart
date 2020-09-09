@@ -5,8 +5,13 @@ import { map, mergeMap, catchError } from 'rxjs/operators';
 
 import { FirestoreService } from '../services/firestore.service'
 import { Item } from '../models/item.model'
+import { Cart } from '../models/cart.model'
 
-import { SetItems } from './actions';
+import {
+  SetItems,
+  AddCart,
+  createEmptyCart
+} from './actions';
 
 @Injectable()
 export class Effects {
@@ -27,6 +32,41 @@ export class Effects {
         }),
         catchError(() => EMPTY)
       ))
+    )
+  );
+
+  loadCart$ = createEffect(() =>  this.actions$.pipe(
+    ofType('Load Cart'),
+    mergeMap((action: any) => {
+      return this.firestoreService.firestore.collection('carts', ref => ref.where('userID', '==', action.userID)).snapshotChanges()
+      .pipe(
+        map(data => {
+          let cart = data.map(e => {
+            return {
+              id: e.payload.doc.id,
+              // @ts-ignore
+              ...e.payload.doc.data()
+            };
+          })[0]
+          if(cart) {
+            return new AddCart(cart)
+          } else {
+            let cart = {
+              items: [],
+              total: 0,
+              userID: action.userID,
+              submitted: false
+            }
+            this.firestoreService.createDoc(
+              'carts',
+              cart
+            )
+            return new AddCart(cart);
+          }
+        }),
+        catchError(() => EMPTY)
+      )
+    })
     )
   );
 

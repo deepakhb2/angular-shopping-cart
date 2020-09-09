@@ -22,3 +22,10 @@ export class AddCurrentUser implements Action {
 
   constructor(public payload?: any) {}
 }
+
+export class AddCart implements Action {
+  //public type: string;
+  readonly type = 'Add Cart';
+
+  constructor(public payload?: any) {}
+}
