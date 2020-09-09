@@ -10,6 +10,7 @@ import {
   createEmptyCart,
   selectShoppingCart,
   AuthGuardService,
+  selectShoppingCurrentUser,
 } from 'cart-firebase';
 
 @Component({
@@ -19,6 +20,7 @@ import {
 })
 export class CartComponent implements OnInit {
   cart$: Observable<Cart>;
+  currentUser: any;
 
   constructor(
     private store: Store<{ items: number }>,
@@ -27,15 +29,16 @@ export class CartComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch({ type: 'Load Cart', userID: 'RoW7zWSl1FhsZ3y8MxEMuev4Ffy2' });
+    this.store.select(selectShoppingCurrentUser).subscribe(user => this.currentUser = user);
+    this.store.dispatch({ type: 'Load Cart', userID: this.currentUser.userID });
     this.cart$ = this.store.select(selectShoppingCart);
   }
 
   saveCart(cart: Cart): void {
-    this.store.dispatch({ type: 'Save Cart', payload: cart, userID: 'RoW7zWSl1FhsZ3y8MxEMuev4Ffy2' });
+    this.store.dispatch({ type: 'Save Cart', payload: cart, userID: this.currentUser.userID});
   }
 
   checkoutCart(cart: Cart): void {
-    this.store.dispatch({ type: 'Save Cart', payload: cart, checkout: true, userID: 'RoW7zWSl1FhsZ3y8MxEMuev4Ffy2' });
+    this.store.dispatch({ type: 'Save Cart', payload: cart, checkout: true, userID: this.currentUser.userID});
   }
 }

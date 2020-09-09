@@ -3,6 +3,8 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 export interface ShoppingState {
   items: [];
   cart: any;
+  currentUser: any;
+  carts: [];
 }
 
 export interface AppState {
@@ -24,3 +26,10 @@ export const selectShoppingCart = createSelector(
     return shopping?.cart
   }
 );
+
+export const selectShoppingCurrentUser = createSelector(
+  selectShopping,
+  (shopping: ShoppingState) => {
+    return shopping?.currentUser
+  }
+)
