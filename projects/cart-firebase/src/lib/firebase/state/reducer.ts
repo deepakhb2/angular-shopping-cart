@@ -21,6 +21,7 @@ export function reducer(state, action) {
       let cart = state.cart;
       deltaState = {
         cart: {
+          id: cart.id,
           items: [...cart.items, item],
           total: cart.total + item.price,
           userID: cart.userID

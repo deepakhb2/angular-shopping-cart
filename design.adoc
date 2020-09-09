@@ -2,6 +2,7 @@
 
 === Requirements
 *Admin*
+
 . Admin should be able to view all the carts created from frontend with
   items in it.
 . User should be able to register and login to application using
@@ -10,6 +11,7 @@
 
 
 *Frontend*
+
 . User should be able to view all items in firestore on dashboard.
 . The user is allowed to add items to cart only if he is logged in.
 . The user should be able to checkout and save the cart back to
@@ -25,19 +27,19 @@
 . Nebular
 
 === Modules
-*Angular Projects*
-. admin: This project is deployed separately in firebase hosting so
+==== Angular Projects
+
+. *admin*: This project is deployed separately in firebase hosting so
   that admin interface is completely separated from frontend. All the
   requirements defined in Admin section is covered in this project to
   view all the carts created by user using frontend project.
-. frontend: The user will be able to view all the items with an 'Add to
-  cart' link to each item if he is logged in. Also, user can save the
+' *frontend*: The user will be able to view all the items with an 'Add
+  to cart' link to each item if he is logged in. Also, user can save the
   partially created cart or checkout the cart.
-. shared: All the shared features like authentication, loading data
-  from firestore and handling store (actions, effects, reducers and
-  selectors) is managed using this project. So the code duplication is
-  avoided and this library project will be independent of other two
-  application projects.
+. *shared/cart-firebase*: All the shared features like authentication,
+  loading data from firestore and handling store (actions, effects,
+  reducers and selectors) is managed using this project. So the code
+  duplication is avoided and this library project will be independent of
+  other two application projects.
 
 === Architecture
-

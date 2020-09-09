@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
@@ -38,7 +39,11 @@ export class Effects {
   loadCart$ = createEffect(() =>  this.actions$.pipe(
     ofType('Load Cart'),
     mergeMap((action: any) => {
-      return this.firestoreService.firestore.collection('carts', ref => ref.where('userID', '==', action.userID)).snapshotChanges()
+      return this.firestoreService.firestore
+        .collection(
+          'carts',
+          ref => ref.where('userID', '==', action.userID).where('submitted', '==', false)
+        ).snapshotChanges()
       .pipe(
         map(data => {
           let cart = data.map(e => {
@@ -66,6 +71,28 @@ export class Effects {
         }),
         catchError(() => EMPTY)
       )
+    })
+    )
+  );
+
+  saveCart$ = createEffect(() =>  this.actions$.pipe(
+    ofType('Save Cart'),
+    map((action: any) => {
+      let cart = action.payload;
+      if(action.checkout) {
+        cart = _.assign({}, cart, {submitted: true})
+      }
+      // Handle errors later.
+      this.firestoreService.updateDoc('carts', cart)
+      if(cart.submitted) {
+        cart = {
+          items: [],
+          total: 0,
+          userID: action.userID,
+          submitted: false
+        };
+      }
+      return new AddCart(cart);
     })
     )
   );

@@ -1,5 +1,8 @@
 <h2>Cart</h2>
 <div *ngIf="cart$ | async; let cart">
+  <a (click)=[saveCart(cart)] *ngIf="authService.isAuthenticated() | async">Save cart</a>
+  <br/>
+  <a (click)=[checkoutCart(cart)] *ngIf="authService.isAuthenticated() | async">checkout cart</a>
   <table>
     <tbody>
       <tr>
