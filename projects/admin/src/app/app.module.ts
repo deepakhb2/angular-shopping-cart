@@ -1,3 +1,7 @@
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -13,10 +17,14 @@ import { FirebaseModule } from 'cart-firebase';
 
 import { environment } from './../environments/environment';
 import { CartModule } from './cart/cart.module';
-import { AuthGuardService } from './services/auth-guard.service';
+import { AuthGuardService } from 'cart-firebase';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
+
+import {
+  reducer,
+  Effects,
+} from 'cart-firebase';
 
 @NgModule({
   declarations: [
@@ -32,7 +40,12 @@ import { StoreModule } from '@ngrx/store';
     NbLayoutModule,
     NbSidebarModule.forRoot(),
     NbButtonModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({ 'shopping': reducer }),
+    StoreDevtoolsModule.instrument({
+      name: 'shopping-cart',
+      maxAge: 25,
+    }),
+    EffectsModule.forRoot([Effects]),
   ],
   providers: [
     AuthGuardService

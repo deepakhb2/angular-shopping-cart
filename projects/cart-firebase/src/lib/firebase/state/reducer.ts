@@ -6,7 +6,12 @@ export function reducer(state, action) {
   var deltaState = {}
 
   switch (action.type) {
-    case '[Items API] Items Loaded':
+    case 'Set Carts':
+      deltaState = {
+        carts: action.payload
+      };
+      return _.assign({}, state, deltaState)
+    case 'Set Items':
       deltaState = {
         items: action.payload
       };

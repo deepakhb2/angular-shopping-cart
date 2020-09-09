@@ -10,12 +10,32 @@ import { Cart } from '../models/cart.model'
 
 import {
   SetItems,
+  SetCarts,
   AddCart,
   createEmptyCart
 } from './actions';
 
 @Injectable()
 export class Effects {
+
+  loadCarts$ = createEffect(() => this.actions$.pipe(
+    ofType('Load Carts'),
+    mergeMap(() => this.firestoreService.getCollection('carts')
+      .pipe(
+        map(data => {
+          let carts = data.map(e => {
+            return {
+              id: e.payload.doc.id,
+              // @ts-ignore
+              ...e.payload.doc.data()
+            } as Cart;
+          })
+          return new SetCarts(carts)
+        }),
+        catchError(() => EMPTY)
+      ))
+    )
+  );
 
   loadItems$ = createEffect(() => this.actions$.pipe(
     ofType('Load Items'),
