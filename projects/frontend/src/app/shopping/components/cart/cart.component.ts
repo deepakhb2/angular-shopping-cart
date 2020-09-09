@@ -25,7 +25,7 @@ export class CartComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch(createEmptyCart());
+    this.store.dispatch({ type: 'Load Cart', userID: 'RoW7zWSl1FhsZ3y8MxEMuev4Ffy2' });
     this.cart$ = this.store.select(selectShoppingCart);
   }
 }

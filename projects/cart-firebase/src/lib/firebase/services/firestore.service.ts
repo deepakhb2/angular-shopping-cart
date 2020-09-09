@@ -11,9 +11,8 @@ import {
 export class FirestoreService {
 
   constructor(
-    private firestore: AngularFirestore
+    public firestore: AngularFirestore
   ) { }
-
 
   getCollection(collection: string) {
     return this.firestore.collection(collection).snapshotChanges();
@@ -21,5 +20,21 @@ export class FirestoreService {
 
   getDoc(collection: string, docID: string) {
     return this.firestore.doc(collection+'/'+docID).snapshotChanges();
+  }
+
+  createDoc(collection: string, doc: any) {
+    return new Promise<any>((resolve, reject) =>{
+        this.firestore
+            .collection(collection)
+            .add(doc)
+            .then(res => {}, err => reject(err));
+    });
+  }
+
+  updateDoc(collection: string, doc: any) {
+    return this.firestore
+       .collection(collection)
+       .doc(doc.id)
+       .set(doc, { merge: true });
   }
 }

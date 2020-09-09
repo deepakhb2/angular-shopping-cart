@@ -11,13 +11,9 @@ export function reducer(state, action) {
         items: action.payload
       };
       return _.assign({}, state, deltaState)
-    case 'CreateEmptyCart':
+    case 'Add Cart':
       deltaState = {
-        cart: {
-          items: [],
-          total: 0,
-          userID: state?.currentUser?.userID
-        }
+        cart: action.payload
       }
       return _.assign({}, state, deltaState);
     case 'Add Item To Cart':
@@ -30,7 +26,7 @@ export function reducer(state, action) {
           userID: cart.userID
         }
       }
-      return _.assign({}, state, deltaState);
+      return _.assign({}, state, deltaState)
     case 'Add Current User':
       deltaState = {
         currentUser: action.payload
