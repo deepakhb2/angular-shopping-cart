@@ -1,6 +1,13 @@
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
 import { Component, OnInit } from '@angular/core';
-import { FirestoreService } from 'cart-firebase'
-import { Cart } from 'cart-firebase';
+
+import {
+  FirestoreService,
+  Cart,
+  selectShoppingCarts,
+} from 'cart-firebase'
 
 @Component({
   selector: 'app-cart-list',
@@ -8,22 +15,16 @@ import { Cart } from 'cart-firebase';
   styleUrls: ['./cart-list.component.scss']
 })
 export class CartListComponent implements OnInit {
-  carts: Cart[];
+  carts$: Observable<Cart[]>;
 
   constructor(
+    private store: Store,
     private firestoreService: FirestoreService
   ) { }
 
   ngOnInit(): void {
-    this.firestoreService.getCollection('carts').subscribe(data => {
-      this.carts = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          // @ts-ignore
-          ...e.payload.doc.data()
-        } as Cart;
-      })
-    });
+    this.store.dispatch({ type: 'Load Carts' });
+    this.carts$ = this.store.select(selectShoppingCarts);
   }
 
 }

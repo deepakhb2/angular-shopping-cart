@@ -2,9 +2,16 @@ import { createAction, Action } from '@ngrx/store';
 
 export const createEmptyCart = createAction('CreateEmptyCart')
 
+export class SetCarts implements Action {
+  //public type: string;
+  readonly type = 'Set Carts';
+
+  constructor(public payload?: any) {}
+}
+
 export class SetItems implements Action {
   //public type: string;
-  readonly type = '[Items API] Items Loaded';
+  readonly type = 'Set Items';
 
   constructor(public payload?: any) {}
 }

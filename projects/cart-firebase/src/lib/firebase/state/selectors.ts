@@ -13,6 +13,13 @@ export interface AppState {
 
 export const selectShopping = (state: any) => state.shopping;
 
+export const selectShoppingCarts = createSelector(
+  selectShopping,
+  (shopping: ShoppingState) => {
+    return shopping?.carts
+  }
+);
+
 export const selectShoppingItems = createSelector(
   selectShopping,
   (shopping: ShoppingState) => {

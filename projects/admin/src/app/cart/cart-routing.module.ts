@@ -4,7 +4,7 @@ import {
   RouterModule
 } from '@angular/router';
 
-import { AuthGuardService } from './../services/auth-guard.service';
+import { AuthGuardService } from 'cart-firebase';
 import { CartListComponent } from './components/cart-list/cart-list.component';
 import { CartShowComponent } from './components/cart-show/cart-show.component';
 
