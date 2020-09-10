@@ -1,11 +1,14 @@
+<p *ngIf="user$ | async; let user">
+  Username: {{ user.email }}
+</p>
 <button
-  *ngIf="isAuthenticated$ | async"
+  *ngIf="user$ | async"
   (click)="logout()">
   Logout
 </button>
 
 <button
-  *ngIf="!(isAuthenticated$ | async)"
+  *ngIf="!(user$ | async)"
   (click)="login()">
   Login
 </button>
