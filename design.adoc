@@ -33,7 +33,7 @@
   that admin interface is completely separated from frontend. All the
   requirements defined in Admin section is covered in this project to
   view all the carts created by user using frontend project.
-' *frontend*: The user will be able to view all the items with an 'Add
+. *frontend*: The user will be able to view all the items with an 'Add
   to cart' link to each item if he is logged in. Also, user can save the
   partially created cart or checkout the cart.
 . *shared/cart-firebase*: All the shared features like authentication,
@@ -43,3 +43,14 @@
   other two application projects.
 
 === Architecture
+In Progress
+
+=== Deploy
+
+. Run `ng build admin`
+. Run `ng build frontend`
+. Copy the code from `dist/admin/*` to `firebase-cli/public-admin`.
+. Copy the code from `dist/frontend/*` to `firebase-cli/public`.
+. Update values for site and public under hosting in firebase.json to
+  map to corresponding site and folder.
+. Run `firebase deploy --only hosting`.
