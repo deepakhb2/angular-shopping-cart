@@ -23,7 +23,7 @@ export class CartListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch({ type: 'Load Carts' });
+    this.store.dispatch({ type: 'Load Carts', submitted: true });
     this.carts$ = this.store.select(selectShoppingCarts);
   }
 

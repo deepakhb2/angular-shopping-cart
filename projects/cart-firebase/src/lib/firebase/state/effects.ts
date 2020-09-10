@@ -20,7 +20,10 @@ export class Effects {
 
   loadCarts$ = createEffect(() => this.actions$.pipe(
     ofType('Load Carts'),
-    mergeMap(() => this.firestoreService.getCollection('carts')
+    mergeMap((action: any) => this.firestoreService.firestore.collection(
+      'carts',
+      ref => ref.where('submitted', '==', action.submitted)
+    ).snapshotChanges()
       .pipe(
         map(data => {
           let carts = data.map(e => {
