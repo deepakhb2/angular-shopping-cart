@@ -1,6 +1,11 @@
-== Design
+= Shopping Cart
+This project is developed using Angular and Firestore to store carts and
+items. The purpose of this project is to understand Angular, loading
+data using NgRx and shared project. Adding test coverage in angular and
+design layout and pages unsing Nebular. The authentication mudule is
+implemented using Nebular.
 
-=== Requirements
+== Requirements
 *Admin*
 
 . Admin should be able to view all the carts created from frontend with
@@ -20,14 +25,14 @@
   time with all items that are added.
 . The registration and authentication will be done using firebase.
 
-=== Tech stack
+== Tech stack
 . Angular
 . NgRx
 . Firestore
 . Nebular
 
-=== Modules
-==== Angular Projects
+== Modules
+=== Angular Projects
 
 . *admin*: This project is deployed separately in firebase hosting so
   that admin interface is completely separated from frontend. All the
@@ -42,10 +47,10 @@
   duplication is avoided and this library project will be independent of
   other two application projects.
 
-=== Architecture
+== Architecture
 In Progress
 
-=== Deploy
+== Deploy
 
 . Run `ng build admin`
 . Run `ng build frontend`
@@ -54,3 +59,6 @@ In Progress
 . Update values for site and public under hosting in firebase.json to
   map to corresponding site and folder.
 . Run `firebase deploy --only hosting`.
+
+Admin url: https://shopping-cart-admin.web.app/
+Frontend url: https://shopping-cart-6e123.web.app/
